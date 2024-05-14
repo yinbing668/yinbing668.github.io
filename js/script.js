@@ -1,37 +1,51 @@
-(function($){
+let sloganBar = document.getElementById("slogan-bar");
+let slogan_position = 0;
+if(slogans.length > 1){
+    callFadeIn(slogans[slogan_position]);
+    slogan_position += 1;
 
-  // Caption
-  $('.article-entry').each(function(i){
-    $(this).find('img').each(function(){
-      if ($(this).parent().hasClass('fancybox')) return;
+    setInterval(()=>{
+        callFadeOut();
+        setTimeout(()=>{
+            callFadeIn(slogans[slogan_position]);
+            slogan_position += 1;
+            if(slogan_position == slogans.length) slogan_position = 0;
+        },1000);
+    },5000);
+}
 
-      var alt = this.alt;
+function callFadeIn(text){
+    sloganBar.innerText = text;
+    sloganBar.classList.remove("fadeOutUp");
+    sloganBar.classList.remove("animated");
+    sloganBar.className += " animated fadeInUp";
+}
 
-      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+function callFadeOut(){
+    sloganBar.classList.remove("fadeInUp");
+    sloganBar.classList.remove("animated");
+    sloganBar.className += " animated fadeOutUp";
+}
 
-      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
-    });
+//help page number insert class
+let pgnm = document.getElementsByClassName("page-number");
+let pgextendnext = document.getElementsByClassName("extend next")[0];
+let pgextendprev = document.getElementsByClassName("extend prev")[0];
 
-    $(this).find('.fancybox').each(function(){
-      $(this).attr('rel', 'article' + i);
-    });
-  });
+if(!!pgextendnext) pgextendnext.className += " item";
 
-  if ($.fancybox){
-    $('.fancybox').fancybox();
-  }
+if(!!pgextendprev) pgextendprev.className += " item";
 
-  // Mobile nav
-  $('#main-nav-toggle').click(function () {
-    $('#header').toggleClass('mobile-on');
-  });
+for(let e in pgnm){
+    pgnm[e].className += " item";
+}
 
-  // 2018-01-12 add by blair
-  $('.j_handlclick').on('click', function(){ 
-    //alert(111)
-    window.open($(this).attr('href') + location.href);
-  })
+//detective url is user goto tag search page
+var tagPosi = location.href.split('/').indexOf("tags");
+if(tagPosi != -1){
+    document.getElementById("big-title").innerText += " - #" + location.href.split('/')[tagPosi+1];
+}
 
-})(jQuery);
+//support youtube
 
-
+//support code highlight
