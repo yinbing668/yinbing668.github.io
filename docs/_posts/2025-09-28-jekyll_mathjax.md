@@ -1,3 +1,7 @@
+---
+layout: post
+---
+
 # The following tutorial from google search Overview, It is really works.
 
 To enable MathJax on a Jekyll site hosted with GitHub Pages, the primary method involves including the MathJax library within your site's HTML templates. Include MathJax CDN Script.
