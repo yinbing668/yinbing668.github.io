@@ -7,18 +7,9 @@ layout: post
 To enable MathJax on a Jekyll site hosted with GitHub Pages, the primary method involves including the MathJax library within your site's HTML templates. Include MathJax CDN Script.
 Edit your Jekyll layout files (e.g., _layouts/default.html or _layouts/post.html) to include the MathJax CDN script within the <head> section. A common way is to create an _includes/mathjax.html file with the script and then include it in your layouts.
 Example _includes/mathjax.html content:
-{% highlight ruby %}
-
-    <script type="text/javascript" async
-      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
-    </script>
-{% highlight %}
 
 Then, in your layout file (e.g., _layouts/post.html), include it like this Code:
 
-{% highlight %}
-{% include mathjax.html %}
-{% highlight ruby %}
 
 
 Configure MathJax (Optional).
